@@ -8,19 +8,28 @@ var SongQueue = Songs.extend({
 	this.on('add',function(){
 		//Checking the queue for the purpose of autoplay
 		if(this.length < 2){
-
 			this.playFirst();
-		} 
+		}
+		
 	}),
+	
 	this.on('ended', function(){
 		this.remove(this.at(0))
 		if(this.length > 0){
 			this.playFirst();
 		} 
 	}),
+	
+	this.on('enqueue', function(song){
+		console.log(song)
+		this.add(song);
+	}),
+	
 	this.on('dequeue', function(){
 		this.remove(this.at(0));
-		this.playFirst();
+		if(this.length){
+			this.playFirst();
+		}
 	})
 
   },
