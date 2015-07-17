@@ -9,6 +9,7 @@ var SongQueue = Songs.extend({
   enqueue: function(song){
   	if(this.length === 1){
   		this.playFirst();
+
   	}
   },
 
@@ -24,6 +25,7 @@ var SongQueue = Songs.extend({
   	this.shift();
   	if(this.length >= 1){
   		this.playFirst();
+
   	} else {
   		this.trigger('stop');
   	}
@@ -31,6 +33,5 @@ var SongQueue = Songs.extend({
 
   playFirst: function(){
   	this.at(0).play();
-  	
   }
 });
